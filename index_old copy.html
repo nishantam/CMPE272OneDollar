@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<<<<<<< HEAD
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Dollar App</title>
+
+  
+  <link rel="stylesheet" href="css/foundation.css" />
+  
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+  <script src="js/app.js"></script>
+  
+  <style>
+  body {
+	  background-color:#e3e3e3;
+  }
+  #logo a{
+	  color:#2ba6cb;
+  }
+  
+  #item {
+	  position:relative;
+	  float:left;
+  	-webkit-box-shadow: 0 5px 4px 0px #777;
+  	   -moz-box-shadow: 0 5px 4px 0px #777;
+  	        box-shadow: 0 5px 4px 0px #777;  
+			margin-bottom:2em;
+			padding-bottom:0.5em;
+			height:20em;
+			background-color:#fff;
+  }
+  
+  #retailer_logo {
+	  width:100%;
+  }
+  
+  #opacity_layer {
+	  position:absolute;
+	  top:12em;
+	  opacity:0.5;
+	  background-color:#4c4c4c;
+	  width:100%;
+	  height:10em;
+  }
+  
+  #product {
+	  position:absolute;
+	  margin:1em;
+	  top:12em;
+	  left:2em;
+	  width:100%;
+	  height:100%;
+  }
+  
+  #product_img {
+	  position:relative;
+	  float:left;
+	  left:-8em
+	  margin:2em;
+	  height:8em;
+  }
+  
+  #buy_button {
+	  background: rgb(201,222,150); /* Old browsers */
+	  background: -moz-linear-gradient(top,  rgba(201,222,150,1) 0%, rgba(138,182,107,1) 0%, rgba(57,130,53,1) 100%); /* FF3.6+ */
+	  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(201,222,150,1)), color-stop(0%,rgba(138,182,107,1)), color-stop(100%,rgba(57,130,53,1))); /* Chrome,Safari4+ */
+	  background: -webkit-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 0%,rgba(57,130,53,1) 100%); /* Chrome10+,Safari5.1+ */
+	  background: -o-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 0%,rgba(57,130,53,1) 100%); /* Opera 11.10+ */
+	  background: -ms-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 0%,rgba(57,130,53,1) 100%); /* IE10+ */
+	  background: linear-gradient(to bottom,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 0%,rgba(57,130,53,1) 100%); /* W3C */
+	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', endColorstr='#398235',GradientType=0 ); /* IE6-9 */
+  	
+  }
+  
+  #price_div {
+	  position: absolute;
+	  width:50%;
+	  top:14em;
+	  right:1em;
+  }
+  
+/*  
+  #product_title {
+	  position:absolute;
+	  left:8em;
+  }
+  
+  #price {
+	  position:absolute;
+	  left:10em;
+	  top:5em;
+	  display:block;
+	  background-color:blue;
+	  color:#fff;
+	  font-size:400%;
+  }
+*/
+  </style>
+  
+  
+
+</head>
+<body ng-app>
+	
+	<nav class="top-bar">
+	  <ul class="title-area">
+	    <!-- Title Area -->
+	    <li class="name">
+	      <h1 id="logo"><a href="#">The Dollar App</a></h1>
+	    </li>
+	    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+	      <li class="divider"></li>
+	      <li class="has-dropdown"><a href="#">Categories</a></li>
+	      <li class="divider"></li>
+	      <li class="has-dropdown"><a href="#">Stores</a></li>
+	      <li class="divider"></li>
+	    </ul>
+
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	      <li class="divider hide-for-small"></li>
+	      <li class="divider"></li>
+	      <li class="has-form">
+	        <form>
+	          <div class="row collapse">
+	            <div class="small-8 columns">
+	              <input type="text" ng-model="searchText">
+	            </div>
+	            <div class="small-4 columns">
+	              <a href="#">Search</a>
+	            </div>
+	          </div>
+	        </form>
+	      </li>
+	    </ul>
+	  </section>
+	</nav>
+	
+	<!-- Header -->
+
+	<div class="row">
+		<div class="large-12 columns">
+			<h2 style="margin-bottom:0;">Welcome to The Dollar App</h2>
+			<p>version 1.0</p>
+			<hr />
+		</div>
+	</div>
+
+	<div class="row">
+		<h3>Todays Deals!</h3>
+	</div>
+
+			<!-- Item Listing -->
+	
+	<div class="row" ng-controller="ItemCtrl">
+		<ul style="list-style:none;">
+			<li ng-repeat="item in items | filter:searchText">
+				<div id="item" class="large-6 columns">
+					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{item.name}}</h5>
+					<div class="large-6 small-6 columns"> 
+						<img id="product_img" src="{{item.image}}" style=" height:auto;">
+					</div>
+					<div class="large-6 small-6 columns">
+						<img id="retailer_logo" src="img/best_buy_logo.jpg">
+					</div>
+					<div id="price_div">
+						<a href="{{item.url}}" id="buy_button" style="position:relative; float:left; 								-moz-border-radius:15px; border-radius:15px; width:100%; ">
+							<p id="price" style="text-align:center; font-size:300%; margin:0; 									color:#fff;">${{item.salePrice}}</p>
+						</a>
+					</div>
+				</div>	
+			</li>
+			<li ng-repeat="deal in ebay | filter:searchText">
+				<div id="item" class="large-6 columns">
+					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{deal.title[0]}}</h5>
+					<div class="large-6 columns">
+						<img id="product_img" src="{{deal.galleryURL[0]}}" style=" height:auto;">
+					</div>
+					<div class="large-6 columns">
+						<img id="retailer_logo" src="img/ebay_logo.jpg">
+					</div>
+					<div id="price_div">
+						<a href="{{deal.viewItemURL[0]}}" id="buy_button" style="position:relative; float:left; 								-moz-border-radius:15px; border-radius:15px; width:100%; ">
+							<p id="price" style="text-align:center; font-size:300%; margin:0; 									color:#fff;">${{deal.sellingStatus[0].currentPrice[0].__value__}}</p>
+						</a>
+					</div>
+				</div>	
+			</li>
+		</ul>	
+	</div>
+	
+	<div id="results"></div>
+
+
+  <script src="js/vendor/jquery.js"></script>
+  
+  <script src="js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+	  
+  
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
+=======
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Cmpe272onedollar by nishantam</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Cmpe272onedollar</h1>
+        <h2>One Dollar App</h2>
+        <a href="https://github.com/nishantam/CMPE272OneDollar" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="cmpe272onedollar" class="anchor" href="#cmpe272onedollar"><span class="octicon octicon-link"></span></a>CMPE272OneDollar</h1>
+
+<p>This is one dolar app as college project for CMPE 272 made by Nishant A Mehta, Rohan Shah, Jason Cruz and Aswin Vijaykumar.
+The basic idea of this project is to be able to handle multiple api and get real-time data and display it to users.</p>
+
+<p>The whole concept of it is to make a place where users can find intresting things to go with these do just $1.</p>
+
+<p>For API:
+Use the developer account and the documentation shared.</p>
+
+<p>For mobile app download:
+<a href="http://phonegap.com/install/">http://phonegap.com/install/</a></p>
+
+<p>Install PhoneGap
+Install</p>
+
+<p>To Install 3.1: Ensure that you have NodeJS installed, then open your commandline and run the following:</p>
+
+<p>C:&gt; npm install -g phonegap</p>
+
+<p>Once installation completes, you can invoke phonegap on command line for further help.</p>
+
+<p>Usage</p>
+
+<p>$ phonegap create my-app
+$ cd my-app
+$ phonegap run android</p>
+
+<p>Learn more at docs.phonegap.com</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/nishantam/CMPE272OneDollar/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/nishantam/CMPE272OneDollar/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/nishantam/CMPE272OneDollar"></a> is maintained by <a href="https://github.com/nishantam">nishantam</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
+>>>>>>> origin/gh-pages
