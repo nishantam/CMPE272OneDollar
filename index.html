@@ -106,13 +106,13 @@
   
 
 </head>
-<body ng-app>
+<body ng-app ng-controller="ItemCtrl">
 	
 	<nav class="top-bar">
 	  <ul class="title-area">
 	    <!-- Title Area -->
 	    <li class="name">
-	      <h1 id="logo"><a href="#">The Dollar App</a></h1>
+	      <h1 id="logo"><a href="#" ng-click="hello()">The Dollar App</a></h1>
 	    </li>
 	    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 	  </ul>
@@ -121,7 +121,13 @@
 	    <!-- Left Nav Section -->
 	    <ul class="left">
 	      <li class="divider"></li>
-	      <li class="has-dropdown"><a href="#">Categories</a></li>
+	      <li class="has-dropdown"><a href="#">Categories</a>
+			  <ul class="dropdown">
+	          	<li><a href="#" ng-click="getCategory(11233)">Music</a></li>
+	          	<li><a href="#" ng-click="getCategory(11450)">Clothing</a></li>
+				<li><a href="#" ng-click="getCategory(267)">Books</a></li>
+			  </ul>
+		  </li>
 	      <li class="divider"></li>
 	      <li class="has-dropdown"><a href="#">Stores</a></li>
 	      <li class="divider"></li>
@@ -138,7 +144,7 @@
 	              <input type="text" ng-model="searchText">
 	            </div>
 	            <div class="small-4 columns">
-	              <a href="#">Search</a>
+	              <a href="#" ng-click="getKeyword()">Search</a>
 	            </div>
 	          </div>
 	        </form>
@@ -163,9 +169,11 @@
 
 			<!-- Item Listing -->
 	
-	<div class="row" ng-controller="ItemCtrl">
+	<div class="row">
 		<ul style="list-style:none;">
-			<li ng-repeat="item in items | filter:searchText">
+			
+			<!-- Waiting on better vendors
+			<li ng-repeat="item in items">	
 				<div id="item" class="large-6 columns">
 					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{item.name}}</h5>
 					<div class="large-6 small-6 columns"> 
@@ -181,7 +189,8 @@
 					</div>
 				</div>	
 			</li>
-			<li ng-repeat="deal in ebay | filter:searchText">
+			-->
+			<li ng-repeat="deal in ebay">
 				<div id="item" class="large-6 columns">
 					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{deal.title[0]}}</h5>
 					<div class="large-6 columns">

@@ -1,6 +1,8 @@
 /* --------- Working Attempt ----------- */
 
 function ItemCtrl($scope, $http) {
+	
+/*	
 	$http({
 		method: 'JSONP',
 		url: 'http://api.remix.bestbuy.com/v1/products(salePrice<=1)?format=json&callback=JSON_CALLBACK&apiKey=5u9dhqrdn9nxme9yreb3y7rp'
@@ -9,7 +11,7 @@ function ItemCtrl($scope, $http) {
 	}).error(function(data, status, headers, config) {
 		alert('Failure' + status);
 	});
-	
+*/	
 
 	// Create a JavaScript array of the item filters you want to use in your request
 	var filterarray = [
@@ -58,16 +60,18 @@ function ItemCtrl($scope, $http) {
 	// Execute the function to build the URL filter
 	buildURLArray(filterarray);
 
-
+	var init = function () {
 	var url = "http://svcs.ebay.com/services/search/FindingService/v1";
-	    url += "?OPERATION-NAME=findItemsByKeywords";
+	    url += "?OPERATION-NAME=findItemsAdvanced";
 	    url += "&SERVICE-VERSION=1.0.0";
 	    url += "&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11";
 	    url += "&GLOBAL-ID=EBAY-US";
 	    url += "&RESPONSE-DATA-FORMAT=JSON";
 	    url += "&callback=JSON_CALLBACK";
 	    url += "&REST-PAYLOAD";
-	    url += "&keywords=toys";
+		url += "&categoryId=11233"
+		url += "&categoryId=11450"
+		url += "&categoryId=267"
 	    url += "&paginationInput.entriesPerPage=10";
 	    url += urlfilter;
 
@@ -75,10 +79,67 @@ function ItemCtrl($scope, $http) {
 			method: "JSONP",
 			url: url
 		}).success(function(data, status, headers, config) {
-			$scope.ebay = data.findItemsByKeywordsResponse[0].searchResult[0].item;
+			$scope.ebay = data.findItemsAdvancedResponse[0].searchResult[0].item;
 		}).error(function(data, status, headers, config) {
 			alert('Failure' + status);
 		});
+	}
+	
+	init();
+	
+		$scope.getKeyword = function () {
+
+
+			var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+			    url += "?OPERATION-NAME=findItemsAdvanced";
+			    url += "&SERVICE-VERSION=1.0.0";
+			    url += "&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11";
+			    url += "&GLOBAL-ID=EBAY-US";
+			    url += "&RESPONSE-DATA-FORMAT=JSON";
+			    url += "&callback=JSON_CALLBACK";
+			    url += "&REST-PAYLOAD";
+			    url += "&keywords=" + $scope.searchText;
+			    url += "&paginationInput.entriesPerPage=10";
+			    url += urlfilter;
+
+				$http({
+					method: "JSONP",
+					url: url
+				}).success(function(data, status, headers, config) {
+					$scope.ebay = data.findItemsAdvancedResponse[0].searchResult[0].item;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
+		}
+		
+		$scope.getCategory = function (id) {
+
+
+			var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+			    url += "?OPERATION-NAME=findItemsAdvanced";
+			    url += "&SERVICE-VERSION=1.0.0";
+			    url += "&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11";
+			    url += "&GLOBAL-ID=EBAY-US";
+			    url += "&RESPONSE-DATA-FORMAT=JSON";
+			    url += "&callback=JSON_CALLBACK";
+			    url += "&REST-PAYLOAD";
+			    url += "&categoryId=" + id;
+			    url += "&paginationInput.entriesPerPage=10";
+			    url += urlfilter;
+
+				$http({
+					method: "JSONP",
+					url: url
+				}).success(function(data, status, headers, config) {
+					$scope.ebay = data.findItemsAdvancedResponse[0].searchResult[0].item;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
+		}
+		
+		$scope.hello = function () {
+			alert($scope.searchText);
+		}
 
 
 }
