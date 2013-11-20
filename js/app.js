@@ -67,8 +67,8 @@ function ItemCtrl($scope, $http) {
 	    url += "&RESPONSE-DATA-FORMAT=JSON";
 	    url += "&callback=JSON_CALLBACK";
 	    url += "&REST-PAYLOAD";
-	    url += "&keywords=toys";
-	    url += "&paginationInput.entriesPerPage=10";
+	    url += "&keywords=toys",//+keyword;
+	    url += "&paginationInput.entriesPerPage=10",//+noofentires;
 	    url += urlfilter;
 
 		$http({
