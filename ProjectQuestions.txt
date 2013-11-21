@@ -1,0 +1,21 @@
+Questions:
+What is the difference between your website and websites like DollarTree and 99centsdollarstore?
+I can search things in ebay and Apple instead of your store, why should I use your website?
+What about the location based search?
+What are the difficulties you faced while developing the website?
+Why dont you have a login or sigup?
+How are you finding the location of a user?
+Why dont you have a database?
+How frequent are you updating your results?
+
+Are we going to add about us, help?
+Are we going to add pagenation?
+
+
+User Cases:
+When I want some simple items like stationary, I would not want to go to a big retail outlet and would search for near by cheaper options
+
+I want products for dollar one as well as deals for dollar one
+
+I would prefer a dollar store for products which do not require a high quality and can be bought cheap
+
