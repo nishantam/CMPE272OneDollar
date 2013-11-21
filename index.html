@@ -18,19 +18,12 @@
   <script src="js/app.js"></script>
   
   <script>	
-<<<<<<< HEAD
 
-=======
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
   function getLocation()
     {
     if (navigator.geolocation)
       {
-<<<<<<< HEAD
-      return navigator.geolocation.getCurrentPosition(showPosition,showError);
-=======
       navigator.geolocation.getCurrentPosition(showPosition,showError);
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
       }
     else{x.innerHTML="Geolocation is not supported by this browser.";}
     }
@@ -39,22 +32,12 @@
     {
     lat=position.coords.latitude;
     lon=position.coords.longitude;
-<<<<<<< HEAD
 	$.ajax({
 		url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true&",
 		success: function (response) {
-			document.getElementById("location").innerHTML=JSON.stringify(response.results[0].address_components[4].long_name);
-=======
-	alert("hello" + lat + " " + lon);
-	$.ajax({
-		url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true&",
-		success: function (response) {
-			alert(JSON.stringify(response));
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
+			document.getElementById("location").innerHTML=JSON.stringify(response.results[0].address_components[4].long_name);  
 		}
-	});
-
-    
+		});
     }
 
   function showError(error)
@@ -75,11 +58,7 @@
         break;
       }
     }
-<<<<<<< HEAD
-	var loc = getLocation();
-=======
 	getLocation();
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
   </script>
   
   <style>
@@ -232,7 +211,7 @@
 
 	<div class="row">
  	  <ul id="keywords">
-  		  <li ng-repeat="keys in keywords"><a href="#" ng-click="getSugKeyword({{keys}})">{{keys}}</a></li>
+  <!--		  <li ng-repeat="keys in keywords"><a href="#" ng-click="getSugKeyword({{keys}})">{{keys}}</a></li> -->
   	  </ul> 
 		<div class="large-12 columns">
 			<h2 style="margin-bottom:0;">Welcome to The Dollar App</h2>
