@@ -1,0 +1,71 @@
+how to be millionair?
+ 
+Saving money, still not compromising on lifestyle.
+
+used db2 and were able to merge data and send it to users. v common systematic json file sorted by price for each category.
+so we can display it and arrange them properly.
+Also we can use that values with DB2 SQL to support transactions and other analytical stuff.
+NoSQL not so gud for transactions. DB2 supports both SQL and NoSQL and DB2 so it was ideal for us.
+Also we where able to find analytics from database. ALso DB reduces size of json files by elimination of unnecessory keys and values. good for mobile users. quicker and more unified.
+
+
+Intro:
+Why we started. What it is? Group Members. 
+
+Pitch: Its a disruptive idea. 
+Why? Why $1. 
+Value and convinience as opposed to cheap commodity.
+Savings. Who wants to be a millionair?
+Whats diff? from ebay? from traditional brick motar $ store?
+V tedious to find all $1 stuff and have to explore many shops. most $1 deals are never shown untill one digs into.
+More personalized vs mass production.
+Dont need to compromise on novelty to save money.
+Being economical and not cheap.
+Cite reports, reviews on why is $ store imp for economy.
+Its sharing of ideas and user experiences.
+
+Technology Stack
+Rapid Prototyping
+Rapidly prototype and iterate on your designs & cut down significantly on the development of your product.
+Made For All Devices
+Your product will work across all devices from desktops, phone and tablet.
+Future Friendly
+Your product will scale to any four corners, allowing you to be prepared for devices that don't even exist yet.
+
+
+Angular js
+AngularJS is an open-source JavaScript framework, maintained by Google, that assists with running single-page applications. Its goal is to augment browser-based applications with model–view–controller (MVC) capability, in an effort to make both development and testing easier.
+The library reads in HTML that contains additional custom tag attributes; it then obeys the directives in those custom attributes, and binds input or output parts of the page to a model represented by standard JavaScript variables. The values of those JavaScript variables can be manually set, or retrieved from static or dynamic JSON resources.
+
+Zurb Foundation
+Mobile First:
+Foundation is built with small devices as a priority, and goes up from there.
+Rapid prototyping:
+Foundation is built with small devices as a priority, and goes up from there.
+7. Why doesn't Foundation have as much styling as Bootstrap?
+We purposely left our styles sparse. We didn't want to end up with a world where all the sites looked like Foundation — that's why we left out a lot of complex styles so you can add to our defaults easily without having to override a bunch of styles baked in. It also helps with integration and alleviates code bloat. 
+8. Can I use just the Grid?
+Yep! If you only want the grid, you can select only that using the customizer or you can import only the grid in your SCSS project. There will be some global files that will come down as well, but those are minimal and needed for the grid to work properly. This includes things like our global box-sizing:border-box reset.
+CSS: You can visit the download page and uncheck “All Foundation Components”. Then make sure to check “Grid”. This will let you download Foundation and only include the grid.
+
+API
+DB2 NoSQL
+Java
+
+Development: (give demo)
+Started with Simple ebay sample. Show it.
+Very simple UI and basic api calling. Making it v easy to use api than database.
+With more complexity and customization, became diff.
+More APIs makes it more complex and diff API used. Eg. Show data from JSON files.
+Used Geolocation. Provides keywords. Search cases. keyword suggesstion features.
+Cool things, books, Apps.
+
+Future:
+With Database able to sort and make a single consistant JSON file to handle.
+Hides /abstracts actual data.
+Able to track and do analysis with data saved and display only what is reqired.
+Saves user bandwidht and increase speed as JSON file after filter from DB2 is v small compared to JSON from API.
+Able to provide truely localized deals.
+Timely able to update database with API and import them into Database.
+Can use API for trading in future to allow payment. 
+Also can use own Relational database from SQL DB2 to store transaction while analytics done from NoSQL.

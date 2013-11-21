@@ -1,0 +1,31 @@
+item search walmart
+http://walmartlabs.api.mashery.com/v1/search?query=ipod&format=json&apiKey=dpyers3yxbj5t5hykbc2vxmd
+
+
+taxanomy walmart
+http://walmartlabs.api.mashery.com/v1/taxonomy?format=json&apiKey=dpyers3yxbj5t5hykbc2vxmd
+
+Search for Ipod:
+
+http://api.walmartlabs.com/v1/search?apiKey={apiKey}&lsPublisherId={Your LinkShare Publisher Id}&query=ipod
+
+Search for Ipod within electronics and sort by increasing price:
+
+http://api.walmartlabs.com/v1/search?apiKey={apiKey}&lsPublisherId={Your LinkShare Publisher Id}&query=ipod&categoryId=3944&sort=price&ord=asc
+
+Search for Ipod within electronics, sort by bestsellers and return full response:
+
+http://api.walmartlabs.com/v1/search?apiKey={apiKey}&lsPublisherId={Your LinkShare Publisher Id}&query=ipod&categoryId=3944&sort=bestseller&responseGroup=full
+
+
+////apple
+https://itunes.apple.com/search?term=yelp&country=us&entity=software
+    var aurl
+		$http({
+			method: "JSONP",
+			url: aurl
+		}).success(function(data, status, headers, config) {
+			$scope.ebay = data.findItemsByKeywordsResponse[0].searchResult[0].item;
+		}).error(function(data, status, headers, config) {
+			alert('Failure' + status);
+		});

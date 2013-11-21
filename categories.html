@@ -14,73 +14,7 @@
   <script src="js/vendor/custom.modernizr.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
-  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script src="js/app.js"></script>
-  
-  <script>	
-<<<<<<< HEAD
-
-=======
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
-  function getLocation()
-    {
-    if (navigator.geolocation)
-      {
-<<<<<<< HEAD
-      return navigator.geolocation.getCurrentPosition(showPosition,showError);
-=======
-      navigator.geolocation.getCurrentPosition(showPosition,showError);
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
-      }
-    else{x.innerHTML="Geolocation is not supported by this browser.";}
-    }
-
-  function showPosition(position)
-    {
-    lat=position.coords.latitude;
-    lon=position.coords.longitude;
-<<<<<<< HEAD
-	$.ajax({
-		url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true&",
-		success: function (response) {
-			document.getElementById("location").innerHTML=JSON.stringify(response.results[0].address_components[4].long_name);
-=======
-	alert("hello" + lat + " " + lon);
-	$.ajax({
-		url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true&",
-		success: function (response) {
-			alert(JSON.stringify(response));
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
-		}
-	});
-
-    
-    }
-
-  function showError(error)
-    {
-    switch(error.code) 
-      {
-      case error.PERMISSION_DENIED:
-        x.innerHTML="User denied the request for Geolocation."
-        break;
-      case error.POSITION_UNAVAILABLE:
-        x.innerHTML="Location information is unavailable."
-        break;
-      case error.TIMEOUT:
-        x.innerHTML="The request to get user location timed out."
-        break;
-      case error.UNKNOWN_ERROR:
-        x.innerHTML="An unknown error occurred."
-        break;
-      }
-    }
-<<<<<<< HEAD
-	var loc = getLocation();
-=======
-	getLocation();
->>>>>>> e91f180f9b9c66c018b11f6385dcd0857f3997f5
-  </script>
   
   <style>
   body {
@@ -113,11 +47,6 @@
 	  background-color:#4c4c4c;
 	  width:100%;
 	  height:10em;
-  }
-  
-  #location {
-	  color:#fff;
-	  margin-top:.5em;
   }
   
   #product {
@@ -177,13 +106,13 @@
   
 
 </head>
-<body ng-app ng-controller="ItemCtrl">
+<body ng-app>
 	
 	<nav class="top-bar">
 	  <ul class="title-area">
 	    <!-- Title Area -->
 	    <li class="name">
-	      <h1 id="logo"><a href="#" ng-click="hello()">The Dollar App</a></h1>
+	      <h1 id="logo"><a href="#">The Dollar App</a></h1>
 	    </li>
 	    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
 	  </ul>
@@ -192,15 +121,7 @@
 	    <!-- Left Nav Section -->
 	    <ul class="left">
 	      <li class="divider"></li>
-	      <li class="has-dropdown"><a href="#">Categories</a>
-			  <ul class="dropdown">
-	          	<li><a href="#" ng-click="getCategory(11233)">Music</a></li>
-	          	<li><a href="#" ng-click="getCategory(11450)">Clothing</a></li>
-				<li><a href="#" ng-click="getCategory(267)">Books</a></li>
-				<li><a href="#" ng-click="getCategory(220)">Toys & Hobbies</a></li>
-				<li><a href="#" ng-click="getCategory(1249)">Video Games & Consoles</a></li>
-			  </ul>
-		  </li>
+	      <li class="has-dropdown"><a href="#">Categories</a></li>
 	      <li class="divider"></li>
 	      <li class="has-dropdown"><a href="#">Stores</a></li>
 	      <li class="divider"></li>
@@ -210,8 +131,6 @@
 	    <ul class="right">
 	      <li class="divider hide-for-small"></li>
 	      <li class="divider"></li>
-		  <li id="location"></li>
-		  <li class="divider"></li>
 	      <li class="has-form">
 	        <form>
 	          <div class="row collapse">
@@ -219,7 +138,7 @@
 	              <input type="text" ng-model="searchText">
 	            </div>
 	            <div class="small-4 columns">
-	              <a href="#" ng-click="getKeyword()">Search</a>
+	              <a href="#">Search</a>
 	            </div>
 	          </div>
 	        </form>
@@ -231,9 +150,6 @@
 	<!-- Header -->
 
 	<div class="row">
- 	  <ul id="keywords">
-  		  <li ng-repeat="keys in keywords"><a href="#" ng-click="getSugKeyword({{keys}})">{{keys}}</a></li>
-  	  </ul> 
 		<div class="large-12 columns">
 			<h2 style="margin-bottom:0;">Welcome to The Dollar App</h2>
 			<p>version 1.0</p>
@@ -242,16 +158,14 @@
 	</div>
 
 	<div class="row">
-		<h3>Out of the Box Deals!</h3>
+		<h3>Todays Deals!</h3>
 	</div>
 
 			<!-- Item Listing -->
 	
-	<div class="row">
+	<div class="row" ng-controller="ItemCtrl">
 		<ul style="list-style:none;">
-			
-			<!-- Waiting on better vendors
-			<li ng-repeat="item in items">	
+			<li ng-repeat="item in items | filter:searchText">
 				<div id="item" class="large-6 columns">
 					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{item.name}}</h5>
 					<div class="large-6 small-6 columns"> 
@@ -267,18 +181,17 @@
 					</div>
 				</div>	
 			</li>
-			-->
-			<li ng-repeat="deal in ebay">
+			<li ng-repeat="deal in ebay | filter:searchText">
 				<div id="item" class="large-6 columns">
 					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{deal.title[0]}}</h5>
-					<div class="large-6 small-6 columns">
+					<div class="large-6 columns">
 						<img id="product_img" src="{{deal.galleryURL[0]}}" style=" height:auto;">
 					</div>
-					<div class="large-6 small-6 columns">
+					<div class="large-6 columns">
 						<img id="retailer_logo" src="img/ebay_logo.jpg">
 					</div>
 					<div id="price_div">
-						<a href="{{deal.viewItemURL[0]}}" target="_blank" id="buy_button" style="position:relative; float:left; 								-moz-border-radius:15px; border-radius:15px; width:100%; ">
+						<a href="{{deal.viewItemURL[0]}}" id="buy_button" style="position:relative; float:left; 								-moz-border-radius:15px; border-radius:15px; width:100%; ">
 							<p id="price" style="text-align:center; font-size:300%; margin:0; 									color:#fff;">${{deal.sellingStatus[0].currentPrice[0].__value__}}</p>
 						</a>
 					</div>
@@ -329,5 +242,96 @@
   <script>
     $(document).foundation();
   </script>
+  
+  <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=hairy%20potter">Get suggested keywords in case of spelling mistake (hairy potter --> harry potter)</a>
+  <!-- 
+ var url="http://svcs.ebay.com/services/search/FindingService/v1?";
+   url+="OPERATION-NAME=getSearchKeywordsRecommendation&";
+   url+="SERVICE-VERSION=1.0.0&";
+   url+="SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&";
+   url+="RESPONSE-DATA-FORMAT=JSON&";
+   url+="REST-PAYLOAD&";
+   url+="keywords=";
+   url+=keywords; */
+   -->
+<br>
+  <!-- 
+   //find by category with histogram
+/*
+   http://svcs.ebay.com/services/search/FindingService/v1?
+   OPERATION-NAME=findItemsByCategory&
+   SERVICE-VERSION=1.0.0&
+   SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&
+   RESPONSE-DATA-FORMAT=JSON&
+   REST-PAYLOAD&
+   paginationInput.entriesPerPage=2&
+   categoryId=307&
+   outputSelector=AspectHistogram*/
+-->
+   <br>
+   <p>Find items by category with histogram
+   <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=2&categoryId=307&outputSelector=AspectHistogram">JSON </a>
+   <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&paginationInput.entriesPerPage=2&categoryId=307&outputSelector=AspectHistogram">XML </a>
+  <br>
+  <!--
+  //find by category: Using XML to clearly see the data. Else use JSON
+/*  http://svcs.ebay.com/services/search/FindingService/v1?
+   OPERATION-NAME=findItemsByCategory&
+   SERVICE-VERSION=1.0.0&
+   SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&
+   RESPONSE-DATA-FORMAT=JSON&
+   REST-PAYLOAD&
+   categoryId=10181&
+   paginationInput.entriesPerPage=2   */
+   -->
+   <br>
+   <p>Find items by category
+      <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&categoryId=10181&paginationInput.entriesPerPage=2"> JSON</a>
+   <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=10181&paginationInput.entriesPerPage=2"> XML</a>
+<br>
+<!--
+http://svcs.ebay.com/services/search/FindingService/v1?
+   OPERATION-NAME=findItemsByCategory&
+   SERVICE-VERSION=1.0.0&
+   SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&
+   RESPONSE-DATA-FORMAT=XML&
+   REST-PAYLOAD&
+   categoryId=307&
+   paginationInput.entriesPerPage=3&
+   paginationInput.pageNumber=11&
+   aspectFilter(0).aspectName=Genre&
+   aspectFilter(0).aspectValueName=Spoken+Word+%26+Interviews&
+   aspectFilter(1).aspectName=Condition&
+   aspectFilter(1).aspectValueName(0)=Brand+New&
+   aspectFilter(1).aspectValueName(1)=Like+New
+   -->
+   <p>Find items by category with extra filters
+      <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&categoryId=307&paginationInput.entriesPerPage=2&paginationInput.pageNumber=11&aspectFilter(0).aspectName=Genre&aspectFilter(0).aspectValueName=Spoken+Word+%26+Interviews&aspectFilter(1).aspectName=Condition&aspectFilter(1).aspectValueName(0)=Brand+New&aspectFilter(1).aspectValueName(1)=Like+New"> JSON</a>
+   <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=307&paginationInput.entriesPerPage=2&paginationInput.pageNumber=11&aspectFilter(0).aspectName=Genre&aspectFilter(0).aspectValueName=Spoken+Word+%26+Interviews&aspectFilter(1).aspectName=Condition&aspectFilter(1).aspectValueName(0)=Brand+New&aspectFilter(1).aspectValueName(1)=Like+New"> XML</a>
+<br>
+<!--  get category list in xml
+<?xml version="1.0" encoding="utf-8"?>
+<GetCategoriesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <RequesterCredentials>
+    <eBayAuthToken>ABC...123</eBayAuthToken>
+  </RequesterCredentials>
+  <CategorySiteID>0</CategorySiteID>
+  <DetailLevel>ReturnAll</DetailLevel>
+  <LevelLimit>1</LevelLimit>
+</GetCategoriesRequest>
+-->
+<!-- get detail list of one category
+<?xml version="1.0" encoding="utf-8"?>
+<GetCategoriesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <RequesterCredentials>
+    <eBayAuthToken>ABC...123</eBayAuthToken>
+  </RequesterCredentials>
+  <CategoryParent>267</CategoryParent>
+  <DetailLevel>ReturnAll</DetailLevel>
+  <LevelLimit>2</LevelLimit>
+</GetCategoriesRequest>
+-->
 </body>
 </html>
+
+
