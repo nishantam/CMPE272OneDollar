@@ -109,6 +109,62 @@ function ItemCtrl($scope, $http) {
 				}).error(function(data, status, headers, config) {
 					alert('Failure' + status);
 				});
+				
+				$http({
+					method: "JSONP",
+					url: "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords="+$scope.searchText+"&callback=JSON_CALLBACK"
+				}).success(function(data, status, headers, config) {
+					$scope.keywords = data.getSearchKeywordsRecommendationResponse[0].keywords;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
+				
+	/*		    var aurl = "https://itunes.apple.com/search?";
+			                aurl += "term=all";
+			                aurl += "&country=us&limit=10";
+			                $http({
+			                    method: "JSONP",
+			                    url: aurl
+			                }).success(function(data, status, headers, config) {
+			                    alert(JSON.stringify(data.results);
+								$scope.apple;
+			                }).error(function(data, status, headers, config) {
+			                    alert('Failure' + status);
+			                });     */
+		}
+		
+		$scope.getSugKeyword = function (sug) {
+
+
+			var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+			    url += "?OPERATION-NAME=findItemsAdvanced";
+			    url += "&SERVICE-VERSION=1.0.0";
+			    url += "&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11";
+			    url += "&GLOBAL-ID=EBAY-US";
+			    url += "&RESPONSE-DATA-FORMAT=JSON";
+			    url += "&callback=JSON_CALLBACK";
+			    url += "&REST-PAYLOAD";
+			    url += "&keywords=" + sug;
+			    url += "&paginationInput.entriesPerPage=10";
+			    url += urlfilter;
+
+				$http({
+					method: "JSONP",
+					url: url
+				}).success(function(data, status, headers, config) {
+					$scope.ebay = data.findItemsAdvancedResponse[0].searchResult[0].item;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
+				
+				$http({
+					method: "JSONP",
+					url: "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords="+$scope.searchText+"&callback=JSON_CALLBACK"
+				}).success(function(data, status, headers, config) {
+					$scope.keywords = data.getSearchKeywordsRecommendationResponse[0].keywords;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
 		}
 		
 		$scope.getCategory = function (id) {

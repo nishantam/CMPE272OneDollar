@@ -18,11 +18,12 @@
   <script src="js/app.js"></script>
   
   <script>	
+
   function getLocation()
     {
     if (navigator.geolocation)
       {
-      navigator.geolocation.getCurrentPosition(showPosition,showError);
+      return navigator.geolocation.getCurrentPosition(showPosition,showError);
       }
     else{x.innerHTML="Geolocation is not supported by this browser.";}
     }
@@ -31,11 +32,10 @@
     {
     lat=position.coords.latitude;
     lon=position.coords.longitude;
-	alert("hello" + lat + " " + lon);
 	$.ajax({
 		url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=true&",
 		success: function (response) {
-			alert(JSON.stringify(response));
+			document.getElementById("location").innerHTML=JSON.stringify(response.results[0].address_components[4].long_name);
 		}
 	});
 
@@ -60,7 +60,7 @@
         break;
       }
     }
-	getLocation();
+	var loc = getLocation();
   </script>
   
   <style>
@@ -94,6 +94,11 @@
 	  background-color:#4c4c4c;
 	  width:100%;
 	  height:10em;
+  }
+  
+  #location {
+	  color:#fff;
+	  margin-top:.5em;
   }
   
   #product {
@@ -186,6 +191,8 @@
 	    <ul class="right">
 	      <li class="divider hide-for-small"></li>
 	      <li class="divider"></li>
+		  <li id="location"></li>
+		  <li class="divider"></li>
 	      <li class="has-form">
 	        <form>
 	          <div class="row collapse">
@@ -205,6 +212,9 @@
 	<!-- Header -->
 
 	<div class="row">
+ 	  <ul id="keywords">
+  		  <li ng-repeat="keys in keywords"><a href="#" ng-click="getSugKeyword({{keys}})">{{keys}}</a></li>
+  	  </ul> 
 		<div class="large-12 columns">
 			<h2 style="margin-bottom:0;">Welcome to The Dollar App</h2>
 			<p>version 1.0</p>
@@ -242,10 +252,10 @@
 			<li ng-repeat="deal in ebay">
 				<div id="item" class="large-6 columns">
 					<h5 style="text-align:center; margin-bottom:0.5em; margin-top:0.5em; width:100%;">{{deal.title[0]}}</h5>
-					<div class="large-6 columns">
+					<div class="large-6 small-6 columns">
 						<img id="product_img" src="{{deal.galleryURL[0]}}" style=" height:auto;">
 					</div>
-					<div class="large-6 columns">
+					<div class="large-6 small-6 columns">
 						<img id="retailer_logo" src="img/ebay_logo.jpg">
 					</div>
 					<div id="price_div">
