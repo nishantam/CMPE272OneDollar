@@ -309,6 +309,28 @@ http://svcs.ebay.com/services/search/FindingService/v1?
       <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&categoryId=307&paginationInput.entriesPerPage=2&paginationInput.pageNumber=11&aspectFilter(0).aspectName=Genre&aspectFilter(0).aspectValueName=Spoken+Word+%26+Interviews&aspectFilter(1).aspectName=Condition&aspectFilter(1).aspectValueName(0)=Brand+New&aspectFilter(1).aspectValueName(1)=Like+New"> JSON</a>
    <a href="http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByCategory&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=nishantm-9735-41a4-b488-c3d2b6525d11&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&categoryId=307&paginationInput.entriesPerPage=2&paginationInput.pageNumber=11&aspectFilter(0).aspectName=Genre&aspectFilter(0).aspectValueName=Spoken+Word+%26+Interviews&aspectFilter(1).aspectName=Condition&aspectFilter(1).aspectValueName(0)=Brand+New&aspectFilter(1).aspectValueName(1)=Like+New"> XML</a>
 <br>
+<!--  get category list in xml
+<?xml version="1.0" encoding="utf-8"?>
+<GetCategoriesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <RequesterCredentials>
+    <eBayAuthToken>ABC...123</eBayAuthToken>
+  </RequesterCredentials>
+  <CategorySiteID>0</CategorySiteID>
+  <DetailLevel>ReturnAll</DetailLevel>
+  <LevelLimit>1</LevelLimit>
+</GetCategoriesRequest>
+-->
+<!-- get detail list of one category
+<?xml version="1.0" encoding="utf-8"?>
+<GetCategoriesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <RequesterCredentials>
+    <eBayAuthToken>ABC...123</eBayAuthToken>
+  </RequesterCredentials>
+  <CategoryParent>267</CategoryParent>
+  <DetailLevel>ReturnAll</DetailLevel>
+  <LevelLimit>2</LevelLimit>
+</GetCategoriesRequest>
+-->
 </body>
 </html>
 
