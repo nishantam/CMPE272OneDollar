@@ -29,3 +29,16 @@ https://itunes.apple.com/search?term=yelp&country=us&entity=software
 		}).error(function(data, status, headers, config) {
 			alert('Failure' + status);
 		});
+
+		
+	var aurl = "https://itunes.apple.com/search?";
+			    aurl += "term=" + $scope.searchText;
+				aurl += "&country=us&entity=all";
+				$http({
+					method: "JSONP",
+					url: aurl
+				}).success(function(data, status, headers, config) {
+					$scope.ebay = data.findItemsByKeywordsResponse[0].searchResult[0].item;
+				}).error(function(data, status, headers, config) {
+					alert('Failure' + status);
+				});
