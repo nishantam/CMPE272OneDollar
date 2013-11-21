@@ -1,7 +1,7 @@
 /* --------- Working Attempt ----------- */
 
 function ItemCtrl($scope, $http) {
-	
+
 /*	
 	$http({
 		method: 'JSONP',
@@ -69,9 +69,7 @@ function ItemCtrl($scope, $http) {
 	    url += "&RESPONSE-DATA-FORMAT=JSON";
 	    url += "&callback=JSON_CALLBACK";
 	    url += "&REST-PAYLOAD";
-		url += "&categoryId=11233"
-		url += "&categoryId=11450"
-		url += "&categoryId=267"
+		url += "&categoryId=88433";
 	    url += "&paginationInput.entriesPerPage=10";
 	    url += urlfilter;
 
