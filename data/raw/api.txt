@@ -1,0 +1,7 @@
+item search walmart
+http://walmartlabs.api.mashery.com/v1/search?query=ipod&format=json&apiKey=dpyers3yxbj5t5hykbc2vxmd
+
+
+taxanomy walmart
+http://walmartlabs.api.mashery.com/v1/taxonomy?format=json&apiKey=dpyers3yxbj5t5hykbc2vxmd
+
