@@ -5,6 +5,10 @@ The basic idea of this project is to be able to handle multiple api and get real
 
 The whole concept of it is to make a place where users can find intresting things to go with these do just $1.
 
+URL for app
+
+http://ec2-54-193-2-248.us-west-1.compute.amazonaws.com:8000
+
 
 
 For API:
