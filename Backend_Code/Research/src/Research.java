@@ -38,7 +38,7 @@ public class Research {
     	
     	//command to import json file into (collection)db name xcollectible
     	String cmd ="use research \r"+ 
-    			    "db.xcollectible.importFile(\"C:/JSON_Project/Research/json data files/collectible.js\",200) ";
+    			    "db.xcollectible.importFile(\"C:/JSON_Project/Research/json data files/collectible.json\",200) ";
 		
     	//setup up the execution enviorment
     	ByteArrayInputStream commands = new ByteArrayInputStream(cmd.getBytes());
